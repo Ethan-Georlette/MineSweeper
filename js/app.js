@@ -128,7 +128,7 @@ function gameOver(isWin = false) {
         // elModal.style.backgroundImage = 'url("img/win.jpg")'
     } else {
         strHtml += 'You Lost'
-        elModal.style.backgroundColor = 'white'
+        // elModal.style.backgroundColor = 'white'
     }
     strHtml += '</h1>'
     elModal.innerHTML = strHtml;
@@ -157,8 +157,5 @@ function changeLevel(size) {
     elModal.style.display = 'none';
     gGame.isOn = true;
     gSize=size;
-    gGame.livesCount = 1;
-    gGame.isFirstClick = true;
-    gBoard = createBoard(size);
-    renderBoard(gBoard);
+    initGame();
 }
