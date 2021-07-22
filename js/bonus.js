@@ -26,7 +26,7 @@ function startlives() {
     elFire.style.display = ''
     gfireTop = 35;
     var elBomb = document.querySelector('.bomb');
-    elBomb.style.backgroundImage = 'url("/css/img/bombBackground.png")';
+    elBomb.style.backgroundImage = 'url("css/img/bombBackground.png")';
     var elLives = document.querySelector('.lives');
     elLives.style.opacity = '1'
 
@@ -36,7 +36,7 @@ function loseGame() {
     elModal.innerHTML = '<h1>GAME OVER maybe next time...</h1>';
     elModal.style.display = '';
     var elBomb = document.querySelector('.bomb');
-    elBomb.style.backgroundImage = 'url("/css/img/loseBackground.png")';
+    elBomb.style.backgroundImage = 'url("css/img/loseBackground.png")';
     var elLives = document.querySelector('.lives');
     elLives.style.opacity = '0'
     var elSmiley = document.querySelector('.smiley');

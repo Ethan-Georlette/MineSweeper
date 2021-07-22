@@ -1,6 +1,6 @@
 body{
     /* background-image: linear-gradient(green ,gray); */
-    background-image: url("/img/camo.jpg");
+    background-image: url("img/camo.jpg");
     background-repeat: no-repeat;
     background-size:cover;
 }
@@ -14,7 +14,7 @@ body{
     width: 400px;
 }
 .fire{
-    background-image: url("/img/fire.png");
+    background-image: url("img/fire.png");
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;
@@ -50,7 +50,7 @@ body{
     display: block;
 }
 .bomb{
-    background-image: url("/css/img/bombBackground.png");
+    background-image: url("img/bombBackground.png");
     background-repeat: no-repeat;
     background-size:contain;
     width:800px;
