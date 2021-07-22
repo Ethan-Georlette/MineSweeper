@@ -1,0 +1,262 @@
+body{
+    /* background-image: linear-gradient(green ,gray); */
+    background-image: url("img/camo.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.lives{
+    position: relative;
+    /* top: 2px;
+    display: block; */
+    overflow: hidden;
+    margin: 0px;
+    height: 220px;
+    width: 400px;
+}
+.fire{
+    background-image: url("img/fire.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    height: 45px;
+    width: 30px;
+    left: 360px;
+}
+.life1{
+    position: relative;
+    background-color: burlywood;
+    height: 45px;
+    width: 19px;
+    left: 365px;
+    display: block;
+}
+.life2{
+    position: relative;
+    background-color: burlywood;
+    height: 45px;
+    width: 19px;
+    top: 4px;
+    left: 365px;
+    display: block;
+}
+.life3{
+    position: relative;
+    background-color: burlywood;
+    height: 45px;
+    width: 19px;
+    top: 2px;
+    left: 365px;
+    margin: 0px;
+    display: block;
+}
+.bomb{
+    background-image: url("css/img/bombBackground.png");
+    background-repeat: no-repeat;
+    background-size:contain;
+    width:800px;
+    position: relative;
+    height: 800px;
+    top: -20px;
+    text-align: center;
+    left: 80px;
+    margin: 0px;
+    display:block;
+}
+table{
+    border: solid black 1px;
+    background-image: url("img/sand.jpg");
+    min-width: 400px;
+    min-height: 400px;
+    max-width: 500px;
+    max-height: 500px;
+    position:relative;
+    display: inline-table;
+    text-align: center;
+    top: 30px;
+    right: 20px;
+}
+table td{
+    background-image:url('img/sand.jpg') ;
+    background-size: 100%;
+    border: black 1px solid;
+    border-radius: 10%;
+    height: 30px;
+    width:30px;
+    padding: 0px;
+    margin: 0px;
+    box-shadow: 1px 1px 1px black;
+    text-align: center;
+    font-family: cursive;
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+    text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;;
+}
+table td:hover{
+    box-shadow: inset 1px 1px 1px black;
+}
+td img{
+    height:inherit;
+    width: inherit;
+    margin: 0px;
+}
+@font-face {
+    font-family: digital-clock;
+    src: url(font/digital-7.ttf);
+}
+.timer{
+    position: relative;
+    color:orange ;
+    margin: 10px;
+    margin-left:52%;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 2px;
+    border: gray solid 2px;
+    background-color: black;
+    width: 80px;
+    height: 30px;
+    font-family:digital-clock ;
+    font-size: 30px;
+    top:28px;
+    right: 80px;
+}
+.levels{
+    text-align: left;
+    padding-top: 30px;
+    position: relative;
+    float: left;
+    display:inline;
+    padding: 3px;
+    font-family: cursive;
+    font-size: 30px;
+    font-weight: bolder;
+    top: 150px;
+    color: green;
+    text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    
+}
+input{
+    display: inline-table;
+    margin-bottom: 30px;
+}
+.clicked{
+    filter: grayscale(50%);
+    /* background-image: url("img/sand.jpg"); */
+    box-shadow: inset 1px 1px 1px ;
+}
+.mine{
+    background-image:radial-gradient(circle, rgb(255, 0, 0),rgba(255, 0, 0, 0));
+}
+button{
+    background-color: rgba(128, 128, 128, 0.692);
+    border: black 2px solid;
+    font-family: cursive;
+    font-weight: bolder;
+    font-size: 16px;
+    height: 30px;
+    width: 100px;
+    margin-top: 30px;
+    box-shadow: 1px 1px 1px black;
+    position: relative;
+    left: 100px;
+    top:-150px
+}
+button:hover{
+    box-shadow:inset 0.5px 0.5px 0.5px black;
+}
+button:active{
+    transition: 0.1s;
+    box-shadow: inset 2px 2px 2px black;
+}
+.modal{
+    position:absolute ;
+    padding-left: 100px;
+    text-align: center;
+    height:200px;
+    width: 800px;
+    background-repeat: no-repeat;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: auto;
+    color: green;
+    overflow: hidden;
+    text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;;
+}
+.modal img{
+    height: 200px;
+    position: relative;
+    display: block;
+    float: left;
+
+}
+.modal h1{
+    position: relative;
+    top:30px;
+    display: block;
+    float: left;
+}
+.modal img.salute{
+    position: relative;
+    display: block;
+    float: left;
+    height: 200px;
+    transform: scaleX(-1); 
+    /* background-color: grey; */
+}
+.hidden{
+    display: none;
+    background-image: radial-gradient(circle, rgb(255, 0, 0),rgba(255, 0, 0, 0));
+}
+.smiley{
+    position: relative;
+    display: block;
+    left: 338px;
+    top: 28px;
+    /* background-color: navy; */
+    height: 80px;
+    width: 80px;
+}
+.smiley img{
+    height: 100%;
+    width: 100%;
+}
+.hints{
+    position: relative;
+    left:280px;
+    top: -150px;
+    height: 40px;
+    width: 110px;
+}
+footer{
+    margin: 50px;
+}
+.hintLight{
+    text-shadow:-1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+}
+.hints:hover{
+    cursor: pointer;
+}
+.safeClick{
+    height: 50px;
+    width: 150px;
+    background-image: linear-gradient(green ,burlywood);
+    border-radius: 10%;
+    position: relative;
+    left: 380px;
+    top:-210px
+}
+.safeClick:hover{
+    box-shadow: inset 1.5px 1.5px 1.5px black;
+}
+.safe{
+    background-image:radial-gradient(circle , green ,rgba(0, 128, 0, 0))
+}
+.undo{
+    height: 50px;
+    width: 150px;
+    background-image: linear-gradient(green ,burlywood);
+    border-radius: 10%;
+    position: relative;
+    left: 380px;
+    top:-210px
+}
