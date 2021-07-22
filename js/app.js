@@ -6,19 +6,31 @@ var gGame = {
     isOn: false,
     isFirstClick: true,
     livesCount: 3,
+    ishint: false,
+    safeClickCount: 3
 };
-var gSize=4;
+var gSize = 4;
 var gTimeVal;
+var gGameLog = [];
+
+
 
 function initGame() {
+    gGameLog = [];
     var elModal = document.querySelector('.modal');
     clearInterval(gTimeVal);
     elModal.style.display = 'none';
+    startlives();
+    startHint();
     gGame.isOn = true;
-    gGame.livesCount = 3;
     gGame.isFirstClick = true;
+    gGame.safeClickCount = 3;
+    var elButton = document.querySelector('.safeClick')
+    elButton.innerText = `Safe click ${gGame.safeClickCount}`
     gBoard = createBoard(gSize);
     renderBoard(gBoard);
+    updatelivesCount();
+    console.log(gGame.livesCount);
 }
 function cellClicked(elCell, i, j) {
     //TODO-When cell is clicked check if mine and neighbors
@@ -32,22 +44,37 @@ function cellClicked(elCell, i, j) {
         placeMine(gBoard);
         renderBoard(gBoard);
     }
+    if (gGame.ishint) {
+        giveHint(i, j);
+        return;
+    }
+    if (currCell.isShown) return;
     if (!currCell.isMarked) {
         if (currCell.isMine) {
+            lessLife()
             gGame.livesCount--;
             currCell.isShown = true;
-            if (!gGame.livesCount) gameOver();
+            console.log(gGame.livesCount);
+            if (!gGame.livesCount) {
+                gameOver();
+                return;
+            }
             elCell.innerHTML = MINE_IMG;
             elCell.classList.add('mine');
+            gGameLog.push({ i, j })
         } else if (!currCell.minesAroundCount) {
             currCell.isShown = true;
             clickNeighbours({ i, j });
             elCell.classList.add('clicked');
+            gGameLog.push({ i, j })
         } else {
             currCell.isShown = true;
             elCell.innerText = currCell.minesAroundCount;
             elCell.classList.add('clicked');
+            gGameLog.push({ i, j })
         }
+        elCell.classList.add('clicked');
+        changeSmiley(currCell.isMine);
         currCell.isShown = true;
         checkGameOver();
     }
@@ -79,7 +106,7 @@ function placeMine(board = gBoard) {
     }
     for (var i = 0; i < numOfMines; i++) {
         var cellLocation = getEmptyRandCell(board);
-        console.log(cellLocation);
+        // console.log(cellLocation);
         board[cellLocation.i][cellLocation.j].isMine = true;
         updateNeighborMinesCount(cellLocation);
     }
@@ -97,7 +124,7 @@ function checkGameOver() {
         for (var j = 0; j < gBoard[i].length; j++) {
             var currCell = gBoard[i][j];
             if (!currCell.isShown && !currCell.isMine) return false;
-            if (currCell.isMine&&!currCell.isShown) {
+            if (currCell.isMine && !currCell.isShown) {
                 minesCells.push({ i, j });
             }
         }
@@ -117,22 +144,18 @@ function checkGameOver() {
 function gameOver(isWin = false) {
     gGame.isOn = false;
     clearInterval(gTimeVal)
-    var elModal = document.querySelector('.modal');
     var elHiddens = document.querySelectorAll('.hidden');
-    for (var i = 0; i < elHiddens.length; i++){
-        elHiddens[i].style.display = 'block'
+    for (var i = 0; i < elHiddens.length; i++) {
+        elHiddens[i].style.display = 'inline'
     }
-    var strHtml = '<h1>';
-    if (isWin) {
-        strHtml += 'Congratulations you Won'
-        // elModal.style.backgroundImage = 'url("img/win.jpg")'
-    } else {
-        strHtml += 'You Lost'
-        // elModal.style.backgroundColor = 'white'
-    }
-    strHtml += '</h1>'
-    elModal.innerHTML = strHtml;
-    elModal.style.display = 'block';
+    setTimeout(function () {
+        if (isWin) {
+            winGame();
+        } else {
+            loseGame();
+            // elModal.style.backgroundColor = 'white'
+        }
+    }, 800)
 }
 function clickNeighbours(pos) {
     // elCell, i, j
@@ -156,6 +179,21 @@ function changeLevel(size) {
     var elModal = document.querySelector('.modal');
     elModal.style.display = 'none';
     gGame.isOn = true;
-    gSize=size;
+    gSize = size;
     initGame();
+}
+function updatelivesCount() {
+    switch (gSize) {
+        case '4':
+        case 4:
+            gGame.livesCount = 2;
+            break;
+        case '8':
+            gGame.livesCount = 3;
+            break;
+        case '12':
+            gGame.livesCount = 3
+            break;
+
+    }
 }

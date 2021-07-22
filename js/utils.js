@@ -15,7 +15,7 @@ function createBoard(size = 4, firstClickLocation = { i: 0, j: 0 }) {
                     isMarked: false,
                     isFirstclick: true,
                 };
-                console.log(i, j);
+                // console.log(i, j);
             } else {
                 board[i][j] = {
                     minesAroundCount: 0,
@@ -28,20 +28,20 @@ function createBoard(size = 4, firstClickLocation = { i: 0, j: 0 }) {
             }
         }
     }
-    console.log(board);
+    // console.log(board);
     return board;
 }
 function renderBoard(board) {
 
-   var strHTML='';
+    var strHTML = '';
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>\n';
         for (var j = 0; j < board[0].length; j++) {
             var currCell = board[i][j];
             var cellClass = getCellClass({ i, j })
-            strHTML += `\t <td class="cell ${cellClass}" oncontextmenu="markCell(this,${i},${j});return false;" onclick="cellClicked(this,${i},${j})" >\n`;
-            if(currCell.isMine){
-                strHTML+='\t<img class="hidden" src="img/mine.png" />\n'
+            strHTML += `\t <td class="cell ${cellClass}"oncontextmenu="markCell(this,${i},${j});return false;" onclick="placeStopper();cellClicked(this,${i},${j})">\n`;
+            if (currCell.isMine) {
+                strHTML += '\t<img class="hidden" src="img/mine.png" />\n'
             }
             strHTML += '\t</td>\n';
         }
@@ -54,11 +54,11 @@ function getEmptyRandCell(board = gBoard) {
     var emptyCells = [];
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[i].length; j++) {
-            if (!board[i][j].isFirstclick && !board[i][j].isMine) {
+            if (!board[i][j].isFirstclick && !board[i][j].isMine && !board[i][j].isShown) {
                 emptyCells.push({ i, j })
             } if (board[i][j].isFirstclick) {
                 var firstClickLocation = { i, j }
-                console.log(firstClickLocation);
+                // console.log(firstClickLocation);
             }
         }
     }
@@ -70,7 +70,7 @@ function getEmptyRandCell(board = gBoard) {
             selectedCell = getEmptyRandCell();
         }
     }
-    console.log(selectedCell);
+    // console.log(selectedCell);
     return selectedCell;
 }
 function getNeighbors(pos) {
