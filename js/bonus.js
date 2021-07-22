@@ -2,7 +2,7 @@
 var gfireTop = 35;
 var gHintCount = 3;
 
-function lessLife(numOfLivesLeft) {
+function lessLife() {
     var elFire = document.querySelector(`.fire`);
     gfireTop += 45;
     elFire.style.top = `${gfireTop}px`
@@ -142,6 +142,7 @@ function safeClick(elButton) {
 }
 function undo() {
     console.log(gGameLog);
+    if(!gGame.isOn)return;
     for (var i = gGameLog.length - 1; i > 0; i--) {
         var currLocation = gGameLog.pop();
         if (currLocation === 'stop') return
@@ -150,6 +151,7 @@ function undo() {
         elCurrCell.classList.remove('clicked');
         var currCell = gBoard[currLocation.i][currLocation.j];
         currCell.isShown = false;
+        if(currCell.isMine)gGame.livesCount++;
         elCurrCell.innerHTML = '';
         elCurrCell.innerText = '';
         // console.log(gGameLog[i]);
@@ -157,4 +159,6 @@ function undo() {
 }
 function placeStopper() {
     gGameLog.push('stop');
+}
+function createManualy(){
 }
