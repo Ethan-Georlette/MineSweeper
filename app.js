@@ -82,6 +82,7 @@ function cellClicked(elCell, i, j) {
 function markCell(elCell, i, j) {
     var currCell = gBoard[i][j];
     if(currCell.isShown)return;
+    if(!gGame.isOn)return;
     if (!currCell.isMarked) {
         elCell.innerHTML = MARKED_IMG;
         currCell.isMarked = true
